@@ -1,5 +1,5 @@
 # Namespace for bit (currently exporting (almost) everything in order to facilitate debugging)
-# (c) 2009 Jens Oehlschägel
+# (c) 2009 Jens Oehlsch?gel
 # Licence: GPL2
 # Created: 2009-10-25
 # Last changed: 2009-10-25
@@ -87,6 +87,7 @@ export(
 ,"any.bitwhich"
 ,"any.ri"
 ,"as.bit"
+,"as.bit.default"
 ,"as.bit.bit"
 ,"as.bit.bitwhich"
 ,"as.bit.double"

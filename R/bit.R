@@ -1,5 +1,5 @@
 # 1-bit boolean vectors for R
-# (c) 2008-2009 Jens Oehlschägel
+# (c) 2008-2009 Jens Oehlsch?gel
 # Licence: GPL2
 # Provided 'as is', use at your own risk
 
@@ -121,9 +121,9 @@
 #!   (but not longer) with an attribute 'n' and class 'bit'
 #! }
 #! \author{
-#! Jens Oehlschlägel <Jens.Oehlschlaegel@truecluster.com>
+#! Jens Oehlschl?gel <Jens.Oehlschlaegel@truecluster.com>
 #!
-#! Maintainer: Jens Oehlschlägel <Jens.Oehlschlaegel@truecluster.com>
+#! Maintainer: Jens Oehlschl?gel <Jens.Oehlschlaegel@truecluster.com>
 #! }
 #! \note{
 #!   Currently operations on bit objects have some overhead from R-calls. Do expect speed gains for vectors
@@ -292,7 +292,7 @@
 #! \value{
 #!   NULL
 #! }
-#! \author{ Jens Oehlschlägel }
+#! \author{ Jens Oehlschl?gel }
 #! \seealso{ \code{\link{bit}}  }
 #! \examples{
 #!   bit_done()
@@ -385,7 +385,7 @@ print.bit <- function(x, ...){
 #!    \item unique negative integers to exclude those
 #!   }
 #! }
-#! \author{ Jens Oehlschlägel }
+#! \author{ Jens Oehlschl?gel }
 #! \seealso{ \code{\link{as.bitwhich}}, \code{\link{as.which}}, \code{\link{bit}} }
 #! \examples{
 #!  bitwhich(12, x=c(1,3), poslength=2)
@@ -435,7 +435,7 @@ print.bitwhich <- function(x, ...){
 #! \value{
 #!   TRUE or FALSE
 #! }
-#! \author{ Jens Oehlschlägel }
+#! \author{ Jens Oehlschl?gel }
 #! \seealso{ \code{\link{is.logical}}, \code{\link{bit}}, \code{\link{bitwhich}} }
 #! \examples{
 #!  is.ri(TRUE)
@@ -496,7 +496,7 @@ is.bitwhich <- function(x)
 #! \value{
 #!   the length  A bit vector with the new length
 #! }
-#! \author{ Jens Oehlschlägel }
+#! \author{ Jens Oehlschl?gel }
 #! \seealso{ \code{\link{length}}, \code{\link[=sum.bit]{sum}}, \code{\link[ff]{poslength}}, \code{\link[ff]{maxindex}} }
 #! \examples{
 #!   stopifnot(length(ri(1, 1, 32))==32)
@@ -685,7 +685,7 @@ length.bitwhich <- function(x)
 #! \value{
 #!   An object of class 'bit'
 #! }
-#! \author{ Jens Oehlschlägel }
+#! \author{ Jens Oehlschl?gel }
 #! \seealso{ \code{\link{c}}, \code{\link{bit}} , \code{\link{bitwhich}} }
 #! \examples{
 #!  c(bit(4), bit(4))
@@ -755,7 +755,7 @@ c.bitwhich <- function(...){
 #! \value{
 #!   \code{is.bit} returns FALSE or TRUE, \code{as.bit} returns a vector of class 'bit'
 #! }
-#! \author{ Jens Oehlschlägel }
+#! \author{ Jens Oehlschl?gel }
 #! \seealso{ \code{\link{bit}}, \code{\link[bit:as.logical.bit]{as.logical}} }
 #! \examples{
 #!   x <- as.bit(c(FALSE, NA, TRUE))
@@ -767,6 +767,14 @@ c.bitwhich <- function(...){
 
 as.bit.bit <- function(x, ...)
   x
+
+as.bit.default <- function(x, ...){
+  n <- length(x)
+  if (n == 0)
+    x <- logical(0)
+  b <- bit(n)
+  .Call("R_bit_set", b, x, c(1L, n), PACKAGE="bit")
+}
 
 as.bit.logical <- function(x, ...){
   n <- length(x)
@@ -860,7 +868,7 @@ as.bit.ri <- function(x, ...){
 #! \value{
 #!   \code{\link{as.logical}} returns a vector of \code{FALSE, TRUE}, \code{\link{as.integer}} and \code{\link{as.double}} return a vector of \code{0,1}.
 #! }
-#! \author{ Jens Oehlschlägel }
+#! \author{ Jens Oehlschl?gel }
 #! \seealso{ \code{\link{as.bit}}, \code{\link{as.which}}, \code{\link{as.bitwhich}}, \code{\link[ff]{as.ff}}, \code{\link[ff]{as.hi}} }
 #! \examples{
 #!   x <- ri(2, 5, 10)
@@ -953,7 +961,7 @@ as.double.ri <- function(x, ...){
 #! \value{
 #!   a vector of class 'logical' or 'integer'
 #! }
-#! \author{ Jens Oehlschlägel }
+#! \author{ Jens Oehlschl?gel }
 #! \seealso{ \code{\link{as.bit}}, \code{\link{as.logical}}, \code{\link{as.integer}}, \code{\link{as.which}}, \code{\link{as.bitwhich}}, \code{\link[ff]{as.ff}}, \code{\link[ff]{as.hi}} }
 #! \examples{
 #!   r <- ri(5, 20, 100)
@@ -1052,7 +1060,7 @@ as.which.bitwhich <- function(x, ...){
 #! \value{
 #!   a value of class \code{\link{bitwhich}}
 #! }
-#! \author{ Jens Oehlschlägel }
+#! \author{ Jens Oehlschl?gel }
 #! \seealso{ \code{\link{bitwhich}}, \code{\link{as.bit}} }
 #! \examples{
 #!  as.bitwhich(c(FALSE, FALSE, FALSE))
@@ -1272,7 +1280,7 @@ as.logical.bitwhich <- function(x, ...){
 #! \value{
 #!   An object of class 'bit' (or 'bitwhich')
 #! }
-#! \author{ Jens Oehlschlägel }
+#! \author{ Jens Oehlschl?gel }
 #! \seealso{ \code{\link{bit}}, \code{\link{Logic}} }
 #! \examples{
 #!   x <- as.bit(c(FALSE, FALSE, FALSE, NA, NA, NA, TRUE, TRUE, TRUE))
@@ -1575,7 +1583,7 @@ xor.bitwhich(e1, e2)
 #! \value{
 #!   as expected
 #! }
-#! \author{ Jens Oehlschlägel }
+#! \author{ Jens Oehlschl?gel }
 #! \seealso{ \code{\link{bit}}, \code{\link{all}}, \code{\link{any}}, \code{\link{min}}, \code{\link{max}}, \code{\link{range}}, \code{\link{sum}}, \code{\link{summary}} }
 #! \examples{
 #!   x <- as.bit(c(TRUE, TRUE))
@@ -1890,7 +1898,7 @@ if (FALSE){
 #!   The extractors \code{[[} and \code{[} return a logical scalar or vector.
 #!   The replacment functions return a bit object.
 #! }
-#! \author{ Jens Oehlschlägel }
+#! \author{ Jens Oehlschl?gel }
 #! \seealso{ \code{\link{bit}}, \code{\link{Extract}} }
 #! \examples{
 #!   x <- as.bit(c(FALSE, NA, TRUE))
@@ -2096,7 +2104,7 @@ if (FALSE){
 #! \value{
 #!   A two element integer vector with class 'ri'
 #! }
-#! \author{ Jens Oehlschlägel }
+#! \author{ Jens Oehlschl?gel }
 #! \seealso{ \code{\link[ff]{as.hi.ri}} }
 #! \examples{
 #!  bit(12)[ri(1,6)]
@@ -2216,7 +2224,7 @@ summary.ri <- function(object, ...){
 #! \value{
 #!   \command{physical} and \command{virtual} returns a list with named elements
 #! }
-#! \author{ Jens Oehlschlägel }
+#! \author{ Jens Oehlschl?gel }
 #! \seealso{
 #!  \code{\link[ff]{physical.ff}}, \code{\link[ff]{physical.ffdf}}
 #! }
@@ -2286,7 +2294,7 @@ R_bit_as_hi <- function(x, range, offset)
 #! \value{
 #!   a vector of class 'logical' or 'integer'
 #! }
-#! \author{ Jens Oehlschlägel }
+#! \author{ Jens Oehlschl?gel }
 #! \seealso{ \code{\link{bit}}, \code{\link{as.bit}}, \code{\link{as.logical}}, \code{\link{as.integer}}, \code{\link{which}} }
 #! \examples{
 #!   if (regtest.bit()){
