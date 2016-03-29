@@ -1,5 +1,6 @@
 \name{as.bit}
 \alias{as.bit}
+\alias{as.bit.default}
 \alias{as.bit.bit}
 \alias{as.bit.logical}
 \alias{as.bit.integer}
@@ -35,7 +36,7 @@ as.bit(x, \dots)
 \value{
   \code{is.bit} returns FALSE or TRUE, \code{as.bit} returns a vector of class 'bit'
 }
-\author{ Jens Oehlschlägel }
+\author{ Jens Oehlschl?gel }
 \seealso{ \code{\link{bit}}, \code{\link[bit:as.logical.bit]{as.logical}} }
 \examples{
   x <- as.bit(c(FALSE, NA, TRUE))
